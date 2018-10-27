@@ -1,0 +1,354 @@
+#include<stdio.h>
+#include<string.h>
+int len=0,len1,i,j;
+
+//length of the string
+int length(char str[]) 
+{
+	for(i=0;str[i]!='\0';i++)
+	len++;
+	return len;
+}
+  
+//concating two strings
+
+char concate(char str[],int len,char str1[],int len1)
+{  
+	for(i=len,j=0;i<len1,str1[j]!='\0';i++,j++)
+	{
+		str[i]=str1[j];
+	} 
+	str[i]='\0';
+	printf("\nconcatenate of the two string is %s",str);
+}  
+
+//finding a character present in the string
+
+int find(char str[],char ch)
+{  
+  len=strlen(str);   
+int count=0,index,flag=0;
+  for(i=0;str[i]!='\0';i++)
+  {
+  	if(ch==str[i]) 
+  	 {
+  	  count++;
+     } 
+  } 
+  printf("\n Total no of Occurence of the given symbol in the string is %d",count);
+  for(i=0;str[i]!='\0';i++)
+   {
+	  if(ch==str[i])
+     {
+     	index=i;
+     	flag=1;
+     	break;
+	 } 
+  }  
+  if(flag==1)
+  printf("\nFirst occurence of the given symbol in the string is at index %d and positon %d",index,index+1);
+   else
+   printf("\nSuch character is not present in the string");
+}  
+
+//finding last occurence of a character in the string
+
+int last(char str[],char ch)
+{  
+int index;
+len=strlen(str);
+  for(i=len-1;i>=0;i--)
+  {
+  	if(ch==str[i])
+  	{
+		  index=i;	
+  		break;
+  	 }
+  }
+  printf("\nThe last occurence of the given symbol in the string is at index %d ans position %d",index,index+1);
+}
+ 
+//concating the reversal of string
+
+char concatereverse(char str[])
+{
+	len=0;
+	char str1[100];
+	len=strlen(str);
+	for(i=0,j=len-1;str[i]!='\0',j>=0;i++,j--)
+	{
+		str1[i]=str[j];
+	} 
+	len1=len;
+	for(i=len,j=0;i<len1,str1[j]!='\0';i++,j++)
+	{
+		str[i]=str1[j];
+	} 
+	str[i]='\0';
+	printf(" \nconcatenate of the reversal of the  string is %s",str);
+}  
+
+//duplicating a given string
+
+char duplicate(char str[])
+{
+	len=strlen(str);
+	len1=len;
+	char str1[100];
+	for(i=0;str[i]!='\0';i++)
+	{
+		str1[i]=str[i];
+	}
+	for(i=len,j=0;i<len1,str1[j]!='\0';i++,j++)
+	{
+		str[i]=str1[j];
+	} 
+	str[i]='\0';
+	printf("\nduplicate of the string is %s",str);
+}  
+//comparing given two strings
+void compare(char str[],char str1[])
+{   
+int flag=0;
+	len=strlen(str);
+	len1=strlen(str1);
+	if(len>len1)
+	printf("String 1 is greater then string 2\n");
+	else if(len<len1)
+	printf("String 2 is greater then string 1\n");
+	else if(len==len1)
+	{  
+		for(i=0;str[i]!='\0';i++)
+		{   
+		label:
+			if(str[i]>str1[i])
+			{	
+			flag=0;		 
+			 goto end;
+		    }
+			else if(str1[i]>str[i])
+			{ 
+			flag=1;
+		     goto end;
+			}
+			else 
+			{  
+			if(i==len)
+		     {
+			  flag=2;
+			 goto end;
+		     } 
+		     else
+			 i++;
+		     goto label; 
+		     }
+		}
+	} 
+	end: 
+	if(flag==0)
+	printf("String 1 is greater\n");
+	else if(flag==1)
+	printf("String 2 is greater\n");
+	else
+    printf("Both are identical\n");
+}  
+
+//comparing strings without caring about uppercase or lowercase
+
+void compare_case(char str[],char str1[])
+{  
+int flag=0;
+for(i=0;str[i]!='\0';i++)
+	{   
+		if(str[i]==str1[i]-32 || str1[i]==str[i]-32 || str[i]==str1[i])
+		{
+		 flag=1; 
+		 continue;
+	    }
+	    else 
+	    { 
+	    flag=0;
+		 goto end;
+	    }
+	} 
+	end:
+	if(flag==0)
+	printf("\nStrings are not identical");
+	else
+	printf("\nStrings are identical");
+} 
+
+//reversing a string
+
+char reverse(char str[])
+{  
+len=strlen(str);
+char temp;
+	for(i=0;i<=(len/2)-1;i++)
+	{  
+	 temp=str[i];
+	 str[i]=str[len-1-i];
+	 str[len-1-i]=temp;
+    }
+	printf("\nreverse of the string is %s",str);
+}  
+
+//making string in uppercase
+
+char func(char str[])
+{
+	for(i=0;str[i]!='\0';i++)
+	{
+		if(str[i]>=97 && str[i]<123) 
+		str[i]=str[i]-32;
+	}
+	printf("\nUppercase of the string is %s",str);
+}
+
+//making string in lowercase
+  
+char func1(char str[])
+{ 
+	for(i=0;str[i]!='\0';i++)
+	{
+		if(str[i]>=65 && str[i]<91) 
+		str[i]=str[i]+32;
+	} 
+	printf("\nLowercase of string is %s",str);
+} 
+
+//making string in titlecase
+ 
+char func2(char str[])
+{
+	if(str[0]>=97 && str[0]<123) 
+	str[0]=str[0]-32; 
+	for(i=1;str[i]!='\0';i++)
+	{
+	  	if(str[i]>=65 && str[i]<91) 
+	  	str[i]=str[i]+32;
+	} 
+	printf("\nTitle case of string is %s",str); 
+} 
+
+//inserting a substring ina main string
+
+char substring(char str[],char str1[],int pos)
+{  
+len1=strlen(str1);
+len=strlen(str);
+len=len+len1;
+str[len]='\0';
+    for(i=len-1;i>=pos-1+len1;i--)
+    {
+    	str[i]=str[i-len1];
+	} 
+	for(i=pos-1,j=0;i<pos-1+len1,j<len1;i++,j++)
+	     {
+		str[i]=str1[j]; 
+        }
+	printf("\n new string including the substring is %s",str);
+}  
+
+//finding a substring in a main string
+
+int findsub(char str[],char str1[],int len,int len1)
+{  
+int flag=0,index;
+for(i=0;i<len-len1+1;i++)
+	{  int k=0;
+		for(j=0+i;j<i+len1;j++)
+		{  
+			if(str[j]!=str1[k])
+			{
+				flag=0;
+				break;
+			}
+			else
+			{
+				flag=1;
+				index=i;
+			}
+			++k;
+		} 
+		if(flag==1)
+		{
+			printf("\nSubstring is at index %d",index);
+			break;
+		}
+	} 
+	if(flag==0)
+	printf("no substring is present\n");
+} 
+
+//checking palindromity of string
+
+void palindrome(char str[])
+{  
+len=strlen(str);
+int flag=0;
+	for(i=0;i<(len/2)-1;i++) 
+		{
+			if(str[i]!=str[len-i-1]) 
+			{
+			 flag=0;
+		    	break;
+	     	} 
+	     	else
+	     	flag=1;
+		} 
+		if(flag==0)
+	    	printf("Not a palindrome\n");
+		 else
+		   printf("Palindrome\n");
+}
+ 
+//counting no of vowels present in a string
+
+void check_vowel(char str[])
+{
+	int val=0;
+	      int a[5]={0,0,0,0,0};
+		   for(i=0;str[i]!='\0';i++)
+		    { 
+			 if(str[i]=='a'|| str[i]=='e'||str[i]=='o'|| str[i]=='i' || str[i]=='u')
+			   {
+		    	a[str[i]]++;
+	     	    } 
+		    }  
+			val=a[97]+a[101]+a[105]+a[111]+a[117];
+		
+		printf("\nvowels present in the string are\n");
+		if(a[97]>0)
+		printf("%c ",97);
+		if(a[101]>0)
+		printf("%c ",101);
+	    if(a[105]>0)
+		printf("%c ",105);
+		if(a[111]>0)
+		printf("%c ",111);
+		if(a[117]>0)
+		printf("%c ",117);
+		printf("\nNo of vowels present in the string %d",val);
+}  
+
+//counting no of words present in a string
+
+check_words(char str[])
+{   
+	len=strlen(str);
+		 int wc=1;
+	      for(i=0;i<len;i++)
+	      {
+		    if(str[i]==' ' || str[i]=='\t')
+	         len=len-1;
+     	   } 
+     	    for(i=0;i<len;i++)
+	        {
+		      if(str[i]==' ' || str[i]=='\t')
+	          wc++;
+	           else
+	          wc+=0;
+     	    } 
+	      printf("\ncharacters present in the string are %d and words are %d",len,wc);
+}
